@@ -72,7 +72,7 @@ final class IceBarPanel: NSPanel {
                         // initializer traps on overflow instead of returning nil.
                         let info = window
                             .flatMap({ CGWindowID(exactly: $0.windowNumber) })
-                            .map({ WindowInfo(windowID: $0) }),
+                            .flatMap({ WindowInfo(windowID: $0) }),
                         // Window being offscreen means the menu bar is currently hidden.
                         // Close the bar, as things will start to look weird if we don't.
                         !info.isOnScreen
